@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="MigaConsoleApp/MigaConsoleApp.vcxproj" Id="8eda2783-efd8-4054-b851-40206e3a1144" />
+  <Project Path="TicTacToe/TicTacToe.vcxproj" Id="37ef92d6-8e44-4a77-a2b1-53fe0b74d917" />
+</Solution>
