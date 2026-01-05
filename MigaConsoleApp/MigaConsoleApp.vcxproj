@@ -186,10 +186,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleUi.cpp" />
     <ClCompile Include="MigaConsoleApp.cpp" />
     <ClCompile Include="TttGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleUi.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TttGame.h" />
   </ItemGroup>
