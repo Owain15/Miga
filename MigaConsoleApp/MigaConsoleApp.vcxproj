@@ -132,8 +132,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Admin\source\repos\Owain15\Miga\Connect4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -192,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleUi.h" />
+    <ClInclude Include="MigaConsoleApp.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TttGame.h" />
   </ItemGroup>

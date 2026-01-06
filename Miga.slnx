@@ -4,6 +4,8 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Project Path="Connect4/Connect4.vcxproj" Id="073dc1b5-406f-4fff-aaf3-6dca769f5262">
+    <Platform Solution="*|ARM64" Project="x64" />
+  </Project>
   <Project Path="MigaConsoleApp/MigaConsoleApp.vcxproj" Id="8eda2783-efd8-4054-b851-40206e3a1144" />
-  <Project Path="TicTacToe/TicTacToe.vcxproj" Id="37ef92d6-8e44-4a77-a2b1-53fe0b74d917" />
 </Solution>

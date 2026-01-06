@@ -35,6 +35,9 @@
     <ClInclude Include="ConsoleUi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MigaConsoleApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MigaConsoleApp.rc">

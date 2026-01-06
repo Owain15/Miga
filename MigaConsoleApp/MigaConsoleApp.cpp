@@ -10,6 +10,7 @@
 //#import TicTacToe.dll
 //#include "TicTacToe/TicTacToe.h"
 #include "TttGame.h"
+#include "Connect4.h"
 #include "ConsoleUi.h"
 
 
@@ -19,13 +20,14 @@ int main()
 
     //std::cout << "Mini-Game-Console-App\n";
 
+	
 	TttGame::TttGame* game = new TttGame::TttGame();
 
 	while (game->GetGameState() == TttGame::GameState::InProgress)
 	{
 		ConsoleUi::DrawGameState(game->GetCurrentPlayer(),game->GetGridData());
 		
-		std::string input ;
+		std::string input;
 		std::cin >> input;
 
 	/*	if(input == "exit")
