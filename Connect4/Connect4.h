@@ -1,16 +1,11 @@
 #pragma once
 
-
-
 #ifdef Connect4_EXPORTS
 #define Connect4_API __declspec(dllexport)
 #else
-#define Connect4_API __declspec(dllimport)
+// Do not force __declspec(dllimport) for consumers — allow header-only/linkable usage
+#define Connect4_API
 #endif
-
-
-
-#pragma once
 
 #include <iostream>
 #include <string>
@@ -18,7 +13,6 @@
 
 namespace Connect4
 {
-
 
 	enum class CellState
 	{
@@ -28,8 +22,6 @@ namespace Connect4
 		OutOfBounds
 	};
 
-
-
 	enum class GameState
 	{
 		InProgress,
@@ -38,7 +30,7 @@ namespace Connect4
 		Draw
 	};
 
-	class Game
+	class Connect4_API Game
 	{
 	public:
 
@@ -49,7 +41,7 @@ namespace Connect4
 
 		//bool MakeMove(int row, int col);
 
-		//GameState GetGameState();
+		GameState GetGameState();
 
 		//CellState GetCellState(int row, int col);
 
@@ -70,6 +62,20 @@ namespace Connect4
 		void UpdateGameState();
 
 	};
+
+	
+
 }
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+// Export a simple C symbol to ensure the DLL produces an import library
+Connect4_API void Connect4_EnsureExport();
+
+#ifdef __cplusplus
+}
+#endif
 
 

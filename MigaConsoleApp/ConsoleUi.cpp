@@ -13,15 +13,9 @@ namespace ConsoleUi
 		std::cout << "Mini-Game-Console-App\n\n";
 		// Draw the game state here
 		std::cout << "-----------------------\n";
-		std::cout << "Tic-Tac-Toe Game State\n";
+		std::cout << "No Game Selected\n";
 		std::cout << "-----------------------\n\n";
-		std::cout << "  1 2 3\n";
-		std::cout << "a . . .\n";
-		std::cout << "b . . .\n";
-		std::cout << "c . . .\n\n";
-		std::cout << "-----------------------\n\n";
-		std::cout << "Enter your move (e.g., a1, b2) or 'reset' to restart:\n\n";
-		std::cout << "Move : ";
+	
 	}
 
 
@@ -59,6 +53,38 @@ namespace ConsoleUi
 		std::cout << "\n-----------------------\n\n";
 		std::cout << "Enter your move (e.g., a1, b2) or 'reset' to restart:\n\n";
 		std::cout << "Move : ";
+	}
+
+	void DrawGameState(Connect4::GameState gs)
+	{
+		//// Clear the console
+		//system("cls"); // For Windows, use "clear" for Unix-based systems
+		//// Draw the header
+		//std::cout << "Mini-Game-Console-App-Connect4\n\n";
+		//// Draw the game state here
+		//std::cout << "-----------------------\n";
+		//std::cout << "Connect4 Game State\n";
+		//std::cout << "-----------------------\n\n";
+		//std::cout << "  1 2 3 4 5 6 7\n";
+		//
+		//for (int i = 0; i < 6; i++)
+		//{
+		//	char rowLabel = 'A' + i;
+		//	std::string rowData;
+		//	for (int j = 0; j < 7; j++)
+		//	{
+		//		// Placeholder for cell state representation
+		//		rowData += " .";
+		//	}
+		//
+		//	std::cout << rowLabel << rowData;
+		//	
+		//	std::cout << "\n";
+		//	
+		//}
+		//std::cout << "\n-----------------------\n\n";
+		//std::cout << "Enter your move (e.g.,'1' for colmn 1, '2' for column 2) or 'reset' to restart:\n\n";
+		//std::cout << "Move : ";
 	}
 
 }

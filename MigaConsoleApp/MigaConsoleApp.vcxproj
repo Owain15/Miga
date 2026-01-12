@@ -132,13 +132,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\Users\Admin\source\repos\Owain15\Miga\Connect4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Connect4;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Connect4\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Connect4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -187,16 +187,23 @@
   <ItemGroup>
     <ClCompile Include="ConsoleUi.cpp" />
     <ClCompile Include="MigaConsoleApp.cpp" />
+    <ClCompile Include="RunProgram.cpp" />
     <ClCompile Include="TttGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleUi.h" />
     <ClInclude Include="MigaConsoleApp.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="RunProgram.h" />
     <ClInclude Include="TttGame.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MigaConsoleApp.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Connect4\Connect4.vcxproj">
+      <Project>{073dc1b5-406f-4fff-aaf3-6dca769f5262}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

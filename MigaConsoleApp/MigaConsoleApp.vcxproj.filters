@@ -24,6 +24,9 @@
     <ClCompile Include="ConsoleUi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RunProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MigaConsoleApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RunProgram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
