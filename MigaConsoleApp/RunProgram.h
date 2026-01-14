@@ -1,7 +1,7 @@
 #pragma once
 
 #include "TttGame.h"
-#include "../Connect4/Connect4.h"
+#include "Connect4.h"
 #include "ConsoleUi.h"
 
 

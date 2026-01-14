@@ -4,8 +4,9 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Connect4/Connect4.vcxproj" Id="073dc1b5-406f-4fff-aaf3-6dca769f5262">
-    <Platform Solution="*|ARM64" Project="x64" />
-  </Project>
+  <Folder Name="/Solution Items/">
+    <File Path="readMe.txt" />
+  </Folder>
+  <Project Path="gameLibraries/Connect4/Connect4.vcxproj" Id="c533b0d4-87c5-46d5-9ef8-42ae337b780d" />
   <Project Path="MigaConsoleApp/MigaConsoleApp.vcxproj" Id="8eda2783-efd8-4054-b851-40206e3a1144" />
 </Solution>

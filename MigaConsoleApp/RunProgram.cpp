@@ -4,21 +4,63 @@
 #include <thread>
 
 #include "RunProgram.h"
+#include "Connect4.h"
+
 
 void RunProgram::Connect4()
 {
+	int messageDelay = 1; // seconds
+	
 	Connect4::Game* c4 = new Connect4::Game();
 
-	/*while (c4->GetGameState() == Connect4::GameState::InProgress)
+	while (c4->GetGameState() == Connect4::GameState::InProgress)
 	{
-		ConsoleUi::DrawGameState(c4->GetGameState());
+		//draw game state
+		ConsoleUi::DrawGameState(*c4);
 
+		ConsoleUi::DrawConnect4MovePrompt();
+
+		//get input
 		std::string input;
 		std::cin >> input;
 
-	}*/
+		//handle input
+		if (input == "exit")
+		{
+			std::cout << "\n\nGame Over!\n";
+			std::this_thread::sleep_for(std::chrono::seconds(messageDelay));
+			break;
+		}
+
+		if (input == "reset")
+		{
+			c4->Reset();
+			continue;
+		}
+
+		if (!c4->isInputValid(input))
+		{
+			std::cout << "\n\nInvalid input.\n Please enter a valid column number (1-7)\n or 'reset' to restart.\nor 'exit' to end game.\n";
+			std::this_thread::sleep_for(std::chrono::seconds(messageDelay));
+			continue;
+		}
+
+		bool moveSucsesfull = c4->MakeMove(std::stoi(input) - 1);
+
+		if (!moveSucsesfull)
+		{
+			std::cout << "\n\nMove failed. Try again.\n";
+			std::this_thread::sleep_for(std::chrono::seconds(messageDelay));
+			continue;
+		}
+
+	}
+
+	//end game
+
+	ConsoleUi::DrawGameState(*c4);
 	
-	std::cout << "Connect4 game is not yet implemented.\n";
+	
 }
 
 void RunProgram::TicTacToe()

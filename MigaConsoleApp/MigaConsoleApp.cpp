@@ -12,7 +12,7 @@
 //#import TicTacToe.dll
 //#include "TicTacToe/TicTacToe.h"
 //#include "TttGame.h"
-//#include "../Connect4/Connect4.h"
+//#include "Connect4.h"
 //#include "ConsoleUi.h"
 
 
@@ -21,7 +21,6 @@ int main()
 	
 	//wright program to select game to play
 	
-	//Connect4::Game* c4 = new Connect4::Game();
 	RunProgram::Connect4();
 
 	//RunProgram::TicTacToe();
