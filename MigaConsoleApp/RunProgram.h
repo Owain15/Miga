@@ -7,9 +7,16 @@
 
 namespace RunProgram
 {
-	void Connect4();
+	enum class ProgramChoice
+	{
+		Connect4,
+		TicTacToe
+	};
 
-	bool Connect4RunGame();
+	void ChooseProgram(ProgramChoice choice);
 
-	void TicTacToe();
+	bool Connect4();
+
+	bool TicTacToe();
+
 }

@@ -6,19 +6,34 @@
 #include "RunProgram.h"
 #include "Connect4.h"
 
-
-void RunProgram::Connect4()
+void RunProgram::ChooseProgram(ProgramChoice choice)
 {
 	bool gameRunning = true;
 
 	while (gameRunning)
 	{
-		gameRunning = Connect4RunGame();
+		switch (choice)
+		{
+			case ProgramChoice::Connect4:
+				{ gameRunning = Connect4(); break; }
 
-	}	
+			case ProgramChoice::TicTacToe:
+				{ gameRunning = TicTacToe(); break; }
+
+			default:
+			{
+				gameRunning = false;
+				ConsoleUi::ApplicationNotFound();
+				break;
+			}
+		}
+	}
 }
 
-bool RunProgram::Connect4RunGame()
+
+
+
+bool RunProgram::Connect4()
 {
 	bool gameRunning = true;
 	int messageDelay = 1; // seconds
@@ -70,6 +85,18 @@ bool RunProgram::Connect4RunGame()
 
 	//end game
 
+	if (!gameRunning)
+	{
+		ConsoleUi::DrawGameState(*c4);
+
+		std::cout << "Game Over!\n\nIts A Draw!";
+
+		std::this_thread::sleep_for(std::chrono::seconds(messageDelay));
+
+		return gameRunning;
+	}
+
+
 	while (true)
 	{
 		ConsoleUi::DrawGameState(*c4);
@@ -102,12 +129,11 @@ bool RunProgram::Connect4RunGame()
 	return gameRunning;
 }
 
-void RunProgram::TicTacToe()
+bool RunProgram::TicTacToe()
 {
 	int messageDelay = 1; // seconds
 
-	//std::cout << "Mini-Game-Console-App\n";
-
+	bool gameRunning = true;
 
 	TttGame::TttGame* game = new TttGame::TttGame();
 
@@ -115,13 +141,16 @@ void RunProgram::TicTacToe()
 	{
 		ConsoleUi::DrawGameState(game->GetCurrentPlayer(), game->GetGridData());
 
+		//get input
 		std::string input;
 		std::cin >> input;
 
-		/*	if(input == "exit")
-			{
-
-			}*/
+		//handle input
+		if(input == "exit")
+		{
+			gameRunning = false;
+			break;
+		}
 
 		if (input == "reset")
 		{
@@ -159,14 +188,12 @@ void RunProgram::TicTacToe()
 			input[0] = '0';
 			break;
 		}
+
 		char c1 = input[0];
 		char c2 = input[1];
 
 		int x = atoi(&c1);
 		int y = atoi(&c2) - 1;
-
-		//int x = atoi(&input[0]);
-		//int y = atoi(&input[1])-1;
 
 		if (game->GetCellState(x, y) != TttGame::CellState::Empty)
 		{
@@ -186,4 +213,37 @@ void RunProgram::TicTacToe()
 
 	}
 
+	if(!gameRunning)
+	{
+		ConsoleUi::DrawGameState(game->GetCurrentPlayer(), game->GetGridData());
+		std::cout << "Game Over!\n\nIts A Draw!";
+		std::this_thread::sleep_for(std::chrono::seconds(messageDelay));
+		return gameRunning;
+	}
+
+	while (true)
+	{
+		ConsoleUi::DrawGameState(game->GetCurrentPlayer(), game->GetGridData());
+		std::cout << "Game Over!\n\n";
+		std::cout << "Enter 'reset' to restart or 'exit' to end game:\n\n";
+		std::cout << "Input : ";
+		//get input
+		std::string input;
+		std::cin >> input;
+		//handle input
+		if (input == "exit")
+		{
+			gameRunning = false;
+			break;
+		}
+		if (input == "reset")
+		{
+			break;
+		}
+		std::cout << "\n\nInvalid input.\n Please enter 'reset' to restart.\nor 'exit' to end game.\n";
+		std::this_thread::sleep_for(std::chrono::seconds(messageDelay));
+
+	}
+
+	return gameRunning;
 }

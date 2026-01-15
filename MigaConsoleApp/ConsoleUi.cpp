@@ -1,10 +1,79 @@
 #include <iostream>
+#include <thread>
+#include <limits>
 
 #include "ConsoleUi.h"
 #include "Connect4.h"
 
 namespace ConsoleUi
 {
+
+	namespace HomePage
+	{
+		void DrawHomePage()
+		{
+			// Clear the console
+			system("cls"); // For Windows, use "clear" for Unix-based systems
+			// Draw the header
+			std::cout << "Mini-Game-Console-App\n\n";
+			// Draw the menu options
+			std::cout << "-----------------------\n";
+			std::cout << "1. Connect4\n";
+			std::cout << "2. TicTacToe\n";
+			std::cout << "3. Exit\n";
+			std::cout << "-----------------------\n\n";
+			std::cout << "Select an option (1-3):\n\n";
+			std::cout << "Choice : ";
+		}
+
+		void DrawInputErrorPrompt()
+		{
+
+			// Draw the input error message
+			std::cout << "\n-----------------------\n";
+			std::cout << "Invalid Input! Please try again.\n";
+			std::cout << "-----------------------\n\n";
+
+			//PressEnterToContinue();
+		}
+	}
+
+	void Clear()
+	{
+		// Clear the console
+		system("cls"); // For Windows, use "clear" for Unix-based systems
+	}
+
+	void Sleep()
+	{
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+	}
+
+	void Sleep(int seconds)
+	{
+		std::this_thread::sleep_for(std::chrono::seconds(seconds));
+	}
+
+	void PressEnterToContinue()
+	{
+		std::cout << "Press Enter to Continue";
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
+
+	void ApplicationNotFound()
+	{
+		// Clear the console
+		system("cls"); // For Windows, use "clear" for Unix-based systems
+		// Draw the header
+		std::cout << "Mini-Game-Console-App\n\n";
+		// Draw the application not found message
+		std::cout << "-----------------------\n";
+		std::cout << "Application Not Found!\n";
+		std::cout << "-----------------------\n\n";
+		std::cout << "Press Enter to Continue";
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
+
 	void DrawGameState()
 	{
 		// Clear the console

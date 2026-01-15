@@ -5,6 +5,33 @@
 
 namespace ConsoleUi
 {
+	namespace HomePage
+	{
+		enum class MenuOption
+		{
+			Connect4,
+			TicTacToe,
+			Exit,
+			Invalid
+		};
+		
+		void DrawHomePage();
+		
+		void DrawMenu();
+
+		void DrawInputErrorPrompt();
+		
+	}
+
+	void Clear();
+
+	void Sleep();
+
+	void Sleep(int seconds);
+
+	void PressEnterToContinue();
+
+	void ApplicationNotFound();
 
 	void DrawGameState();
 

@@ -209,12 +209,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleUi.cpp" />
+    <ClCompile Include="Conterollers.cpp" />
     <ClCompile Include="MigaConsoleApp.cpp" />
     <ClCompile Include="RunProgram.cpp" />
     <ClCompile Include="TttGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleUi.h" />
+    <ClInclude Include="Conterollers.h" />
     <ClInclude Include="MigaConsoleApp.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="RunProgram.h" />
