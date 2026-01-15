@@ -9,5 +9,7 @@ namespace RunProgram
 {
 	void Connect4();
 
+	bool Connect4RunGame();
+
 	void TicTacToe();
 }

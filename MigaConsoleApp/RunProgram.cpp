@@ -9,16 +9,28 @@
 
 void RunProgram::Connect4()
 {
+	bool gameRunning = true;
+
+	while (gameRunning)
+	{
+		gameRunning = Connect4RunGame();
+
+	}	
+}
+
+bool RunProgram::Connect4RunGame()
+{
+	bool gameRunning = true;
 	int messageDelay = 1; // seconds
 	
 	Connect4::Game* c4 = new Connect4::Game();
-
+	
 	while (c4->GetGameState() == Connect4::GameState::InProgress)
 	{
 		//draw game state
 		ConsoleUi::DrawGameState(*c4);
 
-		ConsoleUi::DrawConnect4MovePrompt();
+		ConsoleUi::DrawConnect4MovePrompt(c4->GetGameState());
 
 		//get input
 		std::string input;
@@ -27,8 +39,8 @@ void RunProgram::Connect4()
 		//handle input
 		if (input == "exit")
 		{
-			std::cout << "\n\nGame Over!\n";
-			std::this_thread::sleep_for(std::chrono::seconds(messageDelay));
+			gameRunning = false;
+			c4->SetGameState(Connect4::GameState::Draw); // to exit the game loop
 			break;
 		}
 
@@ -58,9 +70,36 @@ void RunProgram::Connect4()
 
 	//end game
 
-	ConsoleUi::DrawGameState(*c4);
-	
-	
+	while (true)
+	{
+		ConsoleUi::DrawGameState(*c4);
+
+		std::cout << "Game Over!\n\n";
+
+		ConsoleUi::DrawConnect4MovePrompt(c4->GetGameState());
+
+		//get input
+		std::string input;
+		std::cin >> input;
+
+		//handle input
+
+		if (input == "exit")
+		{
+			gameRunning = false;
+			break;
+		}
+		if (input == "reset")
+		{
+			break;
+		}
+
+		std::cout << "\n\nInvalid input.\n Please enter 'reset' to restart.\nor 'exit' to end game.\n";
+		std::this_thread::sleep_for(std::chrono::seconds(messageDelay));
+
+	}
+
+	return gameRunning;
 }
 
 void RunProgram::TicTacToe()

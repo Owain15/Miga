@@ -108,10 +108,40 @@ namespace ConsoleUi
 
 	}
 
-	void DrawConnect4MovePrompt()
+	void DrawConnect4MovePrompt(const Connect4::GameState& gameState)
 	{
-		std::cout << "Enter your move (e.g.,'1' for colmn 1, '2' for column 2)\n'reset' to restart\n'exit' to end game:\n\n";
-		std::cout << "Move : ";
+		std::string prompt = "";
+
+		switch (gameState)
+		{
+			case Connect4::GameState::InProgress:
+			{
+				prompt = "Enter your move (e.g.,'1' for colmn 1, '2' for column 2)\n";
+				break;
+			}
+			case Connect4::GameState::Red_Wins:
+			{
+				prompt = "Red Player Wins!\n";
+				break;
+			}
+			case Connect4::GameState::Yellow_Wins:
+			{
+				prompt = "Yellow Player Wins!\n";
+				break;
+			}
+			case Connect4::GameState::Draw:	
+			{
+				prompt = "It's a Draw!\n";
+				break;
+			}
+					
+
+		default:
+			break;
+		}
+
+		std::cout << prompt << "'reset' to restart\n'exit' to end game:\n\nMove : ";
+		
 	}
 
 }

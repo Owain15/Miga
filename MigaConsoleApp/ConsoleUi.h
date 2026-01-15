@@ -12,5 +12,5 @@ namespace ConsoleUi
 
 	void DrawGameState(const Connect4::Game& game);
 
-	void DrawConnect4MovePrompt();
+	void DrawConnect4MovePrompt(const Connect4::GameState& gameState);
 }

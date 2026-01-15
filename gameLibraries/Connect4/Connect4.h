@@ -35,7 +35,7 @@ namespace Connect4
 
 		
 
-		GameState GetGameState();
+		GameState GetGameState() const;
 
 		bool SetGameState(GameState state);
 
@@ -60,6 +60,8 @@ namespace Connect4
 		void UpdateCurrentPlayer();
 
 		void UpdateGameState();
+
+		bool CheckFor4(int row, int col);
 
 	};
 }

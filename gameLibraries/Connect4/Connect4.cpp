@@ -23,7 +23,7 @@ namespace Connect4
 		}
 	}
 
-	GameState Game::GetGameState()
+	GameState Game::GetGameState() const
 	{
 		return gameState;
 	}
@@ -51,7 +51,30 @@ namespace Connect4
 
 	void Game::UpdateGameState()
 	{
-		// Placeholder -- implement game-over detection here
+		int empytyCells = 0;
+
+		for (int row = 0; row < 6; row++)
+			for (int col = 0; col < 7; col++)
+			{
+				if (grid[row][col] == CellState::Empty)
+				{
+					empytyCells++;
+					continue;
+				}
+
+				bool gameEndFound = CheckFor4(row, col);
+
+				if (gameEndFound)
+				{
+					gameState = (grid[row][col] == CellState::Red) ? GameState::Red_Wins : GameState::Yellow_Wins;
+					return;
+				}
+			}
+
+		if (empytyCells < 1)
+		{
+			gameState = GameState::Draw;
+		}
 	}
 
 	bool Game::isInputValid(const std::string& input)
@@ -60,15 +83,15 @@ namespace Connect4
 		{
 			return false;
 		}
-		
+
 		char colChar = input[0];
 		if (colChar < '1' || colChar > '7')
 		{
 			return false;
 		}
-		
+
 		int col = colChar - '1';
-		
+
 
 		return grid[0][col] == CellState::Empty;
 	}
@@ -79,7 +102,7 @@ namespace Connect4
 		{
 			return false;
 		}
-		
+
 		for (int row = 5; row >= 0; --row)
 		{
 			if (grid[row][col] == CellState::Empty)
@@ -95,4 +118,126 @@ namespace Connect4
 		return false; // Column is full
 	}
 
-} 
+	bool Game::CheckFor4(int row, int col)
+	{
+		Connect4::CellState target = grid[row][col];
+		int inARow = 0;
+
+
+		//check horizontal
+
+		for (int i = col - 4; i < col + 4; i++)
+		{
+			//check bounds
+			if (i < 0 || i + 3 >= 7 && row < 0 || row >= 6)
+			{
+				continue;
+			}
+
+			if (grid[row][i] == target)
+			{
+				inARow++;
+			}
+			else
+			{
+				inARow = 0;
+			}
+
+			if (inARow >= 4)
+			{
+				return true;
+			}
+		}
+		
+		//check vertical
+		inARow = 0;
+
+		for (int i = row - 4; i < row + 4; i++)
+		{
+			//check bounds
+			if (col < 0 || col >= 7 && i < 0 || i + 3 >= 6)
+			{
+				continue;
+			}
+
+			if (grid[i][col] == target)
+			{
+				inARow++;
+			}
+			else
+			{
+				inARow = 0;
+			}
+
+			if (inARow >= 4)
+			{
+				return true;
+			}
+		}
+
+		//check diagonal /
+		inARow = 0;
+
+		for (int i = -4; i < 4; i++)
+		{
+			int checkRow = row + i;
+			int checkCol = col - i;
+
+			//check bounds
+			if (checkCol < 0 || checkCol >= 7 && checkRow < 0 || checkRow >= 6)
+			{
+				continue;
+			}
+
+			if (grid[checkRow][checkCol] == target)
+			{
+				inARow++;
+			}
+			else
+			{
+				inARow = 0;
+			}
+
+			if (inARow >= 4)
+			{
+				return true;
+			}
+		}
+
+		//check diagonal \
+
+		inARow = 0;
+
+		for (int i = -4; i < 4; i++)
+		{
+			int checkRow = row + i;
+			int checkCol = col + i;
+
+			//check bounds
+			if (checkCol < 0 || checkCol >= 7 && checkRow < 0 || checkRow >= 6)
+			{
+				continue;
+			}
+
+			if (grid[checkRow][checkCol] == target)
+			{
+				inARow++;
+			}
+			else
+			{
+				inARow = 0;
+			}
+
+			if (inARow >= 4)
+			{
+				return true;
+			}
+				
+		}
+
+		// no connect 4 found
+		return false;
+	}
+
+	
+}
