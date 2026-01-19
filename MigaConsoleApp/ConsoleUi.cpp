@@ -255,11 +255,11 @@ namespace ConsoleUi
 			{
 				if (i == 0)
 				{
-					std::cout << "\n[" << game.GetStonesInPot(2, game.GetPotCount() - 1) << "]"; // player 2 home pot
+					std::cout << "\n[" << game.GetStonesInPot(1, game.GetPotCount() - 1) << "]"; // player 2 home pot
 				}
 				else if (i == game.GetPotCount() - 1)
 				{
-					std::cout << "[" << game.GetStonesInPot(1, game.GetPotCount() - 1) << "]"; // player 1 home pot
+					std::cout << "[" << game.GetStonesInPot(2, game.GetPotCount() - 1) << "]"; // player 1 home pot
 				}
 				else
 				{

@@ -75,6 +75,7 @@ namespace Mancala
 	bool Game::MakeMove(int input)
 	{
 		bool moveMade = false;
+		
 		bool getsAnotherTurn = false;
 
 		int stonesToDistribute = GetStonesInPot(currentPlayer,input -1);
@@ -91,53 +92,92 @@ namespace Mancala
 
 		int index = input -1;
 
-		int player = currentPlayer;
+		int playerPotsAffected = currentPlayer;
 
 		while (stonesToDistribute > 0)
 		{
+			//update index
 			index++;
-
-			if (index == potCount)
+			if (index > potCount - 2 && playerPotsAffected != currentPlayer || index > potCount - 1 && playerPotsAffected == currentPlayer)
 			{
-				if (player == currentPlayer)
-				{
-					if (currentPlayer == 1)
-					{
-						player1Pots[potCount - 1]++;
-					}
-					else
-					{
-						player2Pots[potCount - 1]++;
-					}
-				
-					stonesToDistribute--;
-					
-					if (stonesToDistribute == 0)
-					{
-						getsAnotherTurn = true; 
-					}
-				}
-			
-				index = -1;
-				
-				player = (player == 1) ? 2 : 1;
-			
+				index = 0;
+				playerPotsAffected = (playerPotsAffected == 1) ? 2 : 1;
 			}
-			else
+
+			//valid index check
+			if(index < 0 || index >= potCount)
 			{
-				if (player == 1)
+				return false;
+			}
+
+			//check next pot
+			if (index < potCount - 1)
+			{
+				//normal pot
+				if (playerPotsAffected == 1)
 				{
 					player1Pots[index]++;
+					stonesToDistribute--;
 				}
 				else
 				{
 					player2Pots[index]++;
+					stonesToDistribute--;
 				}
-				
-				stonesToDistribute--;
 			}
+
+			if(index == potCount-1)
+			{
+				//home pot
+				if (playerPotsAffected == currentPlayer)
+				{
+					if (currentPlayer == 1)
+					{
+						player1Pots[potCount -1]++;
+						stonesToDistribute--;
+					}
+					else
+					{
+						player2Pots[potCount -1]++;
+						stonesToDistribute--;
+					}
+	
+				}
+			}
+	
 		}
-		
+
+		//// check last stone for anuther turn or pot steal
+		//if(index == potCount -1)
+		//{
+		//	getsAnotherTurn == true;
+		//}
+
+	/*	if (playerPotsAffected == currentPlayer || GetStonesInPot(playerPotsAffected, index) == 1)
+		{
+			if (currentPlayer == 1)
+			{
+				player1Pots[potCount - 1]++;
+				player1Pots[index] = 0;
+
+				player1Pots[potCount - 1] += player2Pots[potCount - index];
+				player2Pots[potCount - index] = 0;
+
+			}
+			else
+			{ 
+				player2Pots[potCount - 1]++;
+				player2Pots[index] = 0;
+			
+				player2Pots[potCount - 1] += player1Pots[potCount - index];
+				player1Pots[potCount - index] = 0;
+			}
+
+
+		}*/
+
+
+		//handel setting next player
 		if (!getsAnotherTurn)
 		{
 			currentPlayer = (currentPlayer == 1) ? 2 : 1;

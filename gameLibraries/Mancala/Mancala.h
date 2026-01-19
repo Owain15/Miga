@@ -35,9 +35,5 @@ namespace Mancala
 			int player1Pots[7];
 			int player2Pots[7];
 
-
-
-			
-
 	};
 }
