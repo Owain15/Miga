@@ -25,7 +25,7 @@ namespace Controllers
 
 		bool ValidateInput(const std::string& input)
 		{
-			if (input == "1" || input == "2" || input == "3")
+			if (input == "1" || input == "2" || input == "3" || input == "4")
 			{
 				return true;
 			}

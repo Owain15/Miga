@@ -4,6 +4,7 @@
 #include <thread>
 
 #include "RunProgram.h"
+#include "Conterollers.h"
 #include "Connect4.h"
 
 void RunProgram::ChooseProgram(ProgramChoice choice)
@@ -19,6 +20,9 @@ void RunProgram::ChooseProgram(ProgramChoice choice)
 
 			case ProgramChoice::TicTacToe:
 				{ gameRunning = TicTacToe(); break; }
+
+			case ProgramChoice::Mancala:
+				{ gameRunning = Mancala();break; }
 
 			default:
 			{
@@ -246,4 +250,47 @@ bool RunProgram::TicTacToe()
 	}
 
 	return gameRunning;
+}
+
+bool RunProgram::Mancala()
+{
+	int messageDelay = 1; // seconds
+
+	bool gameRunning = true;
+
+	Mancala::Game* game = new Mancala::Game();
+
+	while (gameRunning)
+	{
+		ConsoleUi::MancalaUi::DrawGameState(*game);
+		ConsoleUi::MancalaUi::DrawInputPrompt();
+		
+		std::string input = Controllers::GetInput();
+
+		if (input == "exit")
+		{
+			gameRunning = false;
+			break;
+		}
+
+		if (input == "reset")
+		{
+			game->RestGame();
+			continue;
+		}
+
+		int inputIndex = stoi(input);
+
+		if (!game->ValidateInput(inputIndex))
+		{
+			std::cout << "Invalid move. Try again.\n";
+			std::this_thread::sleep_for(std::chrono::seconds(messageDelay));
+			continue;
+		}
+		
+		//make move
+		bool moveSuccess = game->MakeMove(inputIndex);
+	}
+
+	return false;
 }

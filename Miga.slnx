@@ -6,6 +6,7 @@
   </Configurations>
   <Folder Name="/Solution Items/">
     <File Path="readMe.txt" />
+    <Project Path="gameLibraries/Mancala/Mancala.vcxproj" Id="5282e4f4-47c6-4ab7-8523-708195e321c6" />
   </Folder>
   <Project Path="gameLibraries/Connect4/Connect4.vcxproj" Id="c533b0d4-87c5-46d5-9ef8-42ae337b780d" />
   <Project Path="MigaConsoleApp/MigaConsoleApp.vcxproj" Id="8eda2783-efd8-4054-b851-40206e3a1144" />

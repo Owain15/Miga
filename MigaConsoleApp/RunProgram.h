@@ -2,6 +2,8 @@
 
 #include "TttGame.h"
 #include "Connect4.h"
+#include "Mancala.h"
+
 #include "ConsoleUi.h"
 
 
@@ -10,7 +12,8 @@ namespace RunProgram
 	enum class ProgramChoice
 	{
 		Connect4,
-		TicTacToe
+		TicTacToe,
+		Mancala
 	};
 
 	void ChooseProgram(ProgramChoice choice);
@@ -18,5 +21,7 @@ namespace RunProgram
 	bool Connect4();
 
 	bool TicTacToe();
+
+	bool Mancala();
 
 }

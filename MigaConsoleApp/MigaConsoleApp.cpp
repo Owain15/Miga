@@ -21,6 +21,10 @@
 int main()
 {
 
+	//
+	RunProgram::Mancala();
+	//
+
 	bool appRunning = true;
 	
 	while (appRunning)
@@ -61,6 +65,11 @@ int main()
 				break;
 			}
 			case 3:
+			{
+				RunProgram::ChooseProgram(RunProgram::ProgramChoice::Mancala);
+				break;
+			}
+			case 4:
 			{
 				appRunning = false;
 				break;
